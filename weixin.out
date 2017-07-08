@@ -1,0 +1,72 @@
+nohup: ignoring input
+Using TensorFlow backend.
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcublas.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcudnn.so.5 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcufft.so.8.0 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcuda.so.1 locally
+I tensorflow/stream_executor/dso_loader.cc:135] successfully opened CUDA library libcurand.so.8.0 locally
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE3 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+E tensorflow/stream_executor/cuda/cuda_driver.cc:509] failed call to cuInit: CUDA_ERROR_NO_DEVICE
+I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:158] retrieving CUDA diagnostic information for host: master
+I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:165] hostname: master
+I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:189] libcuda reported version is: 375.39.0
+I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:363] driver version file contents: """NVRM version: NVIDIA UNIX x86_64 Kernel Module  375.39  Tue Jan 31 20:47:00 PST 2017
+GCC version:  gcc version 5.4.0 20160609 (Ubuntu 5.4.0-6ubuntu1~16.04.4) 
+"""
+I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:193] kernel reported version is: 375.39.0
+I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:300] kernel version seems to match DSO: 375.39.0
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+17/07/07 03:02:51 WARN yarn.Client: Neither spark.yarn.jars nor spark.yarn.archive is set, falling back to uploading libraries under SPARK_HOME.
+weixin_captcha_break.py:89: UserWarning: Update your `Model` call to the Keras 2 API: `Model(outputs=[<tf.Tenso..., inputs=Tensor("in...)`
+  model = Model(input=input_tensor, outputs=x)
+author: justry
+Fri Jul  7 03:02:42 2017
+5000
+8000
+____________________________________________________________________________________________________
+Layer (type)                     Output Shape          Param #     Connected to                     
+====================================================================================================
+input_1 (InputLayer)             (None, 53, 130, 3)    0                                            
+____________________________________________________________________________________________________
+conv2d_1 (Conv2D)                (None, 53, 130, 32)   896         input_1[0][0]                    
+____________________________________________________________________________________________________
+conv2d_2 (Conv2D)                (None, 51, 128, 32)   9248        conv2d_1[0][0]                   
+____________________________________________________________________________________________________
+max_pooling2d_1 (MaxPooling2D)   (None, 25, 64, 32)    0           conv2d_2[0][0]                   
+____________________________________________________________________________________________________
+conv2d_3 (Conv2D)                (None, 25, 64, 64)    18496       max_pooling2d_1[0][0]            
+____________________________________________________________________________________________________
+conv2d_4 (Conv2D)                (None, 23, 62, 64)    36928       conv2d_3[0][0]                   
+____________________________________________________________________________________________________
+max_pooling2d_2 (MaxPooling2D)   (None, 11, 31, 64)    0           conv2d_4[0][0]                   
+____________________________________________________________________________________________________
+conv2d_5 (Conv2D)                (None, 11, 31, 128)   73856       max_pooling2d_2[0][0]            
+____________________________________________________________________________________________________
+conv2d_6 (Conv2D)                (None, 9, 29, 128)    147584      conv2d_5[0][0]                   
+____________________________________________________________________________________________________
+max_pooling2d_3 (MaxPooling2D)   (None, 4, 14, 128)    0           conv2d_6[0][0]                   
+____________________________________________________________________________________________________
+conv2d_7 (Conv2D)                (None, 4, 14, 256)    295168      max_pooling2d_3[0][0]            
+____________________________________________________________________________________________________
+conv2d_8 (Conv2D)                (None, 2, 12, 256)    590080      conv2d_7[0][0]                   
+____________________________________________________________________________________________________
+max_pooling2d_4 (MaxPooling2D)   (None, 1, 6, 256)     0           conv2d_8[0][0]                   
+____________________________________________________________________________________________________
+flatten_1 (Flatten)              (None, 1536)          0           max_pooling2d_4[0][0]            
+____________________________________________________________________________________________________
+dense_1 (Dense)                  (None, 512)           786944      flatten_1[0][0]                  
+____________________________________________________________________________________________________
+dropout_1 (Dropout)              (None, 512)           0           dense_1[0][0]                    
+____________________________________________________________________________________________________
+c1 (Dense)                       (None, 52)            26676       dropout_1[0][0]                  
+____________________________________________________________________________________________________
+c2 (Dense)                       (None, 52)            26676       dropout_1[0][0]                  
+____________________________________________________________________________________________________
+c3 (Dense)                       (None, 52)            26676       dropout_1[0][0]                  
+______
