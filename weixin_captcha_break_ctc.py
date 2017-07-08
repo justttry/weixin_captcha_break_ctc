@@ -36,10 +36,10 @@ from keras.objectives import custom_loss, ctc_lambda_func
 
 # 建立SparkContext
 
-application_name = "weixin captcha break"
+application_name = "weixin captcha break ctc"
 master = 'yarn'
 deploymode = 'client'
-num_executors = 5
+num_executors = 1
 num_cores = 1
 num_workers = num_executors * num_cores
 optimizer = 'adagrad'
@@ -77,7 +77,7 @@ rnn_size = 128
 
 input_tensor = Input((width, height, 3))
 x = input_tensor
-for i in range(4):
+for i in range(3):
     x = Conv2D(32*2**i, (3, 3), padding='same', activation='relu')(x)
     x = Conv2D(32*2**i, (3, 3), activation='relu')(x)
     x = MaxPooling2D((2, 2))(x)
@@ -127,7 +127,7 @@ print time.ctime()
 job = Job("3Q20LA3MXU3N8Y9NVJ7A1T5WNHL2IWQSNNJ5V9I5P7MRJ8LSC33EN2DT3EWYLCJA",
           "user1",
           "data_path",
-          5,
+          1,
           1,
           trainer,
           3000,
@@ -137,7 +137,7 @@ print '------------------------test2----------------------------'
 print time.ctime()
 
 # 启动任务
-job.send_with_files('http://13.124.171.155:%d'%send_port, ['generator.py'])
+job.send_with_files('http://13.124.163.64:%d'%send_port, ['generator.py'])
 
 print '------------------------test3----------------------------'
 print time.ctime()
